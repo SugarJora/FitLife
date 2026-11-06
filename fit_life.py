@@ -113,13 +113,25 @@ def get_bmi_category(bmi):
             return category
 
 
-# Применил str.center(width) для выравнивания по центру блока
+# Переменные добавлены в связи с ошибкой
+# FCS100 - множество вычислений в f-string
+separator = '=' * LENGTH_FRAME
+
+# str.center(width) для выравнивания по центру блока
+title = 'FITLIFE'.center(LENGTH_FRAME)
+greeting = 'Здравствуйте! Вас приветствует автономный фитнес-трекер.'
+description = 'Мне нужно собрать базовую информацию о Вас.'
+
+# str.ljust(width) для выравнивания по левому краю шириной width
+greeting_line = greeting.ljust(LENGTH_FRAME)
+description_line = description.ljust(LENGTH_FRAME)
+
 print(f"""
-{'=' * LENGTH_FRAME}
-{'FITLIFE'.center(LENGTH_FRAME)}
-{'=' * LENGTH_FRAME}
-{'Здравствуйте! Вас приветствует автономный фитнес-трекер.':<{LENGTH_FRAME}}
-{'Мне нужно собрать базовую информацию о Вас.':<{LENGTH_FRAME}}
+{separator}
+{title}
+{separator}
+{greeting_line}
+{description_line}
 {'-' * LENGTH_FRAME}
 Краткая сводка:
 - максимальный возраст человека 120 лет;
@@ -145,19 +157,26 @@ water_ml = user_weight * ML_WATER_PER_KG
 water_l = water_ml / RATIO_ML_TO_L
 water_l = round(water_l, 2)
 
+age_suffix = get_age_suffix(user_age)
+bmi_category = get_bmi_category(bmi)
+
+age_report = f'{user_age} {age_suffix}'
+bmi_report = f'{bmi} - {bmi_category}'
+
+
 print(f"""
-{'=' * LENGTH_FRAME}
+{separator}
 {'ОТЧЁТ О ЗДОРОВЬЕ'.center(LENGTH_FRAME)}
-{'=' * LENGTH_FRAME}
+{separator}
 
 Пользователь: {user_name}
-Возраст: {user_age} {get_age_suffix(user_age)}
+Возраст: {age_report}
 
-Индекс массы тела: {bmi} - {get_bmi_category(bmi)}
+Индекс массы тела: {bmi_report}
 
 Рекомендуемая норма воды: {water_l} л. в день
 
-{'=' * LENGTH_FRAME}
+{separator}
 {'БУДЬТЕ ЗДОРОВЫ!'.center(LENGTH_FRAME)}
-{'=' * LENGTH_FRAME}
+{separator}
 """)
