@@ -163,10 +163,12 @@ bmi_category = get_bmi_category(bmi)
 age_report = f'{user_age} {age_suffix}'
 bmi_report = f'{bmi} - {bmi_category}'
 
+report_title = 'ОТЧЁТ О ЗДОРОВЬЕ'.center(LENGTH_FRAME)
+footer_title = 'БУДЬТЕ ЗДОРОВЫ!'.center(LENGTH_FRAME)
 
 print(f"""
 {separator}
-{'ОТЧЁТ О ЗДОРОВЬЕ'.center(LENGTH_FRAME)}
+{report_title}
 {separator}
 
 Пользователь: {user_name}
@@ -177,6 +179,6 @@ print(f"""
 Рекомендуемая норма воды: {water_l} л. в день
 
 {separator}
-{'БУДЬТЕ ЗДОРОВЫ!'.center(LENGTH_FRAME)}
+{footer_title}
 {separator}
 """)
